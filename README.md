@@ -1,2 +1,4 @@
-# jungle_baekjoon_study
-백준 스터디 및 풀이 공간
+# jungle_study
+## 1주차 공부 README
+
+## 1주차 범위: ~1.4 프로세서는 메모리에 저장된 인스트럭션을 읽고 해석한다.
