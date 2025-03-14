@@ -28,6 +28,7 @@
     - [PracticePy/StringsTest.py](PracticePy/StringsTest.py)
 
 * 반복문과 재귀 함수
+    - [PracticePy/LoopAndReTest.py](PracticePy/LoopAndReTest.py)
 
 * 복잡도(BigO,시간,공간)
 
