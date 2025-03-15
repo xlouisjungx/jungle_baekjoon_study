@@ -28,11 +28,19 @@
     - [PracticePy/StringsTest.py](PracticePy/StringsTest.py)
 
 * 반복문과 재귀 함수
-    - [PracticePy/LoopAndReTest.py](PracticePy/LoopAndReTest.py)
+    - 반복문
+        - [PracticePy/LoopAndReTest.py](PracticePy/LoopAndReTest.py)
+
+    - 재귀 함수
+        - 자기 자신을 부르는 함수(함수내에서 자기자신을 사용하는 함수)
+        - 큰 문제를 풀기 위해 작은 문제의 답을 사용해야할 때 사용됨
 
 * 복잡도(BigO,시간,공간)
 
 * 정렬
+    - 선택 정렬
+            
+    - 버블 정렬
 
 * 완전 탐색
 

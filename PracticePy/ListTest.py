@@ -1,5 +1,17 @@
 # 기본 구조 : 리스트명 = []
 
+# 리스트명.count('찾을 문자') -> 해당 문자가 몇개 있는지 찾아줌
+# min()
+# max()
+# list.reverse()
+# list.sort()
+# num.sort(reverse=True)
+
+# list = input().split() --> 문자 입력받아 공백 기준 자르기 --> ['aa', 'bb', 'cc']
+# list = list(input()) --> 문자 입력받아 전체 자르기 --> ['a', 'a', ' ', 'b', 'b', ' ', 'c', 'c']
+# list.append(int(input())) --> 숫자 하나씩 입력받기 --> [11, 22, 33]
+# list = list(map(int, input().split()) --> 숫자 여려개 입력받기 --> [11, 22, 33]
+
 # print("----- 선언 구간 -----")
 
 test = [1, 2, 3, 4, 5]  # 배열 생성
