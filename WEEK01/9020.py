@@ -19,7 +19,7 @@ result = []
 for i in range(T):
     n = int(input())
     
-    n1 = n // 2 
+    n1 = n // 2
     n2 = n // 2
 
     for j in range(3, n):
@@ -27,8 +27,8 @@ for i in range(T):
             result.append((n1, n2))
             break
         else:
-            n1 = n1 - 1
-            n2 = n2 + 1   
+            n1 = n1 - 1  
+            n2 = n2 + 1 
 
 for i in range(len(result)):
     print(result[i][0], result[i][1])
