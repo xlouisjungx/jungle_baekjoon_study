@@ -2,6 +2,9 @@
 num = int(input())
 numL = []
 
+def SortNum(num: int):
+    return
+
 # ----- 문제 해결 부분 -----
 for i in range(num):
     numN = int(input())
