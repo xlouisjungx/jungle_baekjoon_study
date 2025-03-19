@@ -1,14 +1,30 @@
 # ----- 선언 구간 -----
-val = list(map(int, input().split()))
+import math
+
+A, B, V = list(map(int, input().split()))
 H = 0
 day = 0
 
 # ----- 문제 해결 구간 -----
-while H < val[2]:
-    if H + val[0] > val[2]:
-        day = day + 1
-        break
-    else:
-        H = H + val[0] - val[1]
+#while H < val[2]:
+    #day = day + 1
+    #if H + val[0] >= val[2]:
+        #break
+    #else:
+        #H = H + val[0] - val[1]
+
+#print(day)
+
+# 시간 초과 문제 발생하므로 밑의 코드를 사용하면 된다고 함.
+
+# 달팽이 문제를 공식화 하여 풀기....사실 처음에는 좀 몰랐음 알아보니 그렇다 하드라고요
+
+# V - A = 마지막날 전에 도착하는 높이
+# A - B = 달팽이가 올라가고 미끄러지는, 하루동안의 총 이동거리
+# 마지막 + 1 은 마지막 날에도 올라가기 때문에, 더해줘야함
+
+# 나누다보면 소수점 나오고 그러는데, 알아보니 math 함수안에 있는 ceil을 쓰면 올림처리 해준다고 합니다.
+
+day = math.ceil(((V - A) / (A - B)) + 1) # 가장 가까운 정수로 올림하는 함수
 
 print(day)
