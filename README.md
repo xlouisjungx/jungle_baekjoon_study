@@ -7,7 +7,7 @@ Self Study --> [Self_Study/README.md](Self_Study/README.md)
 
 WEEK01 --> [WEEK01/README.md](WEEK01/README.md)
 
-WEEK02 --> []()
+WEEK02 --> [WEEK02/README.md](WEEK02/README.md)
 
 WEEK03 --> []()
 
