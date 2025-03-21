@@ -6,7 +6,7 @@
 
 import sys
 
-def FindWood(Trees: list, N, M):
+def FindWood(Trees: list, M):
     
     Trees.sort()
 
@@ -20,18 +20,17 @@ def FindWood(Trees: list, N, M):
         
         mid = (start + end) // 2
         total = 0
-        
-        # 차이값의 합
+
         for i in Trees:
             if i > mid:
                 total += i - mid
 
-        if total >= M:
-            MaxL = mid
-            start = mid + 1
+        if total < M:
+            end = mid - 1
 
         else:
-            end = mid - 1
+            MaxL = mid
+            start = mid + 1
 
 
     return MaxL
@@ -41,4 +40,4 @@ N, M = map(int, sys.stdin.readline().split())
 
 # ----- 문제 해결 부분 -----
 Trees = list(map(int, sys.stdin.readline().split()))
-print(FindWood(Trees, N, M))
+print(FindWood(Trees, M))
