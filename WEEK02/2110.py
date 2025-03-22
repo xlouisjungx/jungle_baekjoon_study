@@ -1,34 +1,44 @@
 # ----- 선언 부분 -----
-N, C = map(int, input().split())
-numL = []
-start = 0
-end = 0
-total = 0
-mid = 0
-result = 0
+def FindMin(numL, mid, N, C):
+    
+    cnt = 1
+
+    num = numL[0] # 첫 번째 공유기 설치 위치
+
+    for i in range(N):
+        if numL[i] - num >= mid: # 기준점 
+            cnt += 1
+            num = numL[i] # 가장 최근 공유기 설치 위치 업데이트
+    if cnt >= C:
+        return True
+
+    return False # 계산 시, 아니면
+
+def ParaSearch(numL, N, C):  # 파라메트릭 서치
+    
+    numL.sort()
+    
+    start = 0
+    end = numL[-1] - numL[0]
+    mid = 0
+    maxN = 0
+
+    while start <= end:
+        
+        mid = (start + end) // 2
+
+        if FindMin(numL, mid, N, C):
+            start = mid + 1
+            maxN = mid
+        else:
+            end = mid - 1
+
+    return maxN # 최종값
+
+
 # ----- 문제 해결 부분 -----
-for i in range(N):
-    num = input()
-    
-    numL.append(num)
+N, C = map(int, input().split()) # 집의 개수, 공유기의 개수
 
-numL.sort()
+numL = [int(input()) for i in range(N)]
 
-while start <= end:
-    
-    total = 0
-    mid = (start + end) // 2
-
-    if 집간의 거리가 >= 1:
-        total = 현재 위치 - 다른집위치 # 최솟 값 찾기
-        if result > total:
-            result = total
-        start = mid + 1
-
-
-    else:
-        end = mid - 1
-
-print(result)
-
-print(*numL)
+print(ParaSearch(numL, N, C))
