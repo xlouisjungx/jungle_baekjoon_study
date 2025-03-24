@@ -11,12 +11,6 @@ result = [0] * N
 # 0 0 2 2 4
 
 # ----- 문제 해결 부분 -----
-
-for i in range(N):
-    while:
-    
-
-'''
 for i in range(N):
     while stack and numL[stack[-1]] <= numL[i]:
         stack.pop()
@@ -27,4 +21,3 @@ for i in range(N):
     stack.append(i)
 
 print(*result)
-'''

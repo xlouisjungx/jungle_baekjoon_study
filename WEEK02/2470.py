@@ -1,57 +1,37 @@
 # ----- 선언 부분 -----
-N = int(input())
-start = 0
-end = 0
+left = 0
+right = 0
+mid = 0
 result = []
-comN = 0
-minN = 0
-sumN = 0
 
-# ----- 문제 해결 부분 -----
-numL = list(map(int, input().split()))
-
-for i in range(N):
-    for j in range(i+1, N):
-        sumN = numL[i] + numL[j]
-        comN = abs(sumN)
-
-        if comN < minN:
-            minN = comN
-
-            result.append(numL[i])         
-            result.append(numL[j])
-
-result.sort()
-
-print(*result)
+def find_liquids(liquids):
+    # 용액들을 정렬
+    liquids.sort()
     
-
-
-'''
-def brute_force(N, liquids):
-    min_diff = float('inf')  # 무한대로 초기화
-    best_pair = (0, 0)
-
-    # 모든 용액 쌍을 비교
-    for i in range(N):
-        for j in range(i+1, N):
-            current_sum = liquids[i] + liquids[j]
-            current_diff = abs(current_sum)
-
-            if current_diff < min_diff:
-                min_diff = current_diff
-                best_pair = (liquids[i], liquids[j])
+    left, right = 0, len(liquids) - 1
+    close = float('inf')
+    answer = (0, 0)
     
-    return best_pair
+    while left < right:
+        mid = liquids[left] + liquids[right]
+        
+        # 현재 혼합값이 더 0에 가까우면 갱신
+        if abs(mid) < close:
+            close = abs(mid)
+            answer = (liquids[left], liquids[right])
+        
+        # 혼합값이 0보다 작으면 left 증가, 크면 right 감소
+        if mid < 0:
+            left += 1
+        else:
+            right -= 1
+    
+    return answer
 
-# 입력 받기
-N = int(input())
+# 입력
+n = int(input())
 liquids = list(map(int, input().split()))
 
-# brute force로 가장 0에 가까운 두 용액 찾기
-result = brute_force(N, liquids)
-
-# 결과 출력 (오름차순으로 출력)
-print(*sorted(result))
-
-'''
+# 결과 출력 (오름차순 정렬)
+result = find_liquids(liquids)
+print(result[0], result[1])
