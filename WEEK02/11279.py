@@ -1,3 +1,5 @@
+# 시간 초과
+
 # ----- 선언 부분 -----
 from collections import deque
 
