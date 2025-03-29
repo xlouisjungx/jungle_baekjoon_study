@@ -1,50 +1,35 @@
+# ----- 선언 부분 -----
 import heapq
+import sys
 
-def prim(n, edges):
-    # 그래프를 인접 리스트로 변환
-    graph = {i: [] for i in range(n)}  # n은 정점의 수
-    for u, v, weight in edges:
-        graph[u].append((v, weight))  # u -> v
-        graph[v].append((u, weight))  # v -> u (무방향 그래프)
-
-    # MST에 포함된 간선과 가중치
+def prim_mst(n, graph):
+    """ 프림 알고리즘을 사용한 MST 계산 """
+    visited = [False] * (n+1)
+    pq = [(0, 1)]  # (가중치, 시작 노드)
     mst = []
-    mst_weight = 0
+    total_cost = 0
 
-    # 방문한 정점들
-    visited = [False] * n
-
-    # 우선순위 큐 (가중치, 정점)
-    min_heap = [(0, 0)]  # (가중치, 시작 정점 0)
-
-    while min_heap:
-        weight, u = heapq.heappop(min_heap)  # 가중치가 가장 작은 간선 선택
-        
-        if visited[u]:  # 이미 방문한 정점이면 무시
+    while pq:
+        weight, u = heapq.heappop(pq)
+        if visited[u]:
             continue
-        
-        visited[u] = True  # 정점 u를 MST에 포함시킴
-        mst.append((u, weight))  # (정점, 가중치)
-        mst_weight += weight  # MST의 가중치 합 업데이트
+        visited[u] = True
+        total_cost += weight
 
-        # u와 연결된 간선들을 큐에 추가
-        for v, w in graph[u]:
+        for v, w in graph[u]:  # 인접 노드 탐색
             if not visited[v]:
-                heapq.heappush(min_heap, (w, v))  # 연결된 간선들을 큐에 추가
+                heapq.heappush(pq, (w, v))
+                mst.append((u, v, w))
 
-    return mst, mst_weight
+    return total_cost
 
-# 예시
-V, C = map(int, input().split())
+# ----- 문제 해결 부분 -----
+V, E = map(int, input().split())
+graph = {i: [] for i in range(1, V + 1)}
 
-edges = [
-    (0, 1, 10),
-    (0, 2, 6),
-    (0, 3, 5),
-    (1, 3, 15),
-    (2, 3, 4)
-]  # 간선 (u, v, 가중치)
+for _ in range(E):
+    u, v, w = map(int, sys.stdin.readline().split())
+    graph[u].append((v, w))
+    graph[v].append((u, w))  # 무방향 그래프
 
-mst, mst_weight = prim(n, edges)
-print("최소 스패닝 트리:", mst)
-print("MST의 총 가중치:", mst_weight)
+print(prim_mst(V, graph))
