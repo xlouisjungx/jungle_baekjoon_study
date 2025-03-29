@@ -1,43 +1,43 @@
-f = open("input.txt", "r")
-g = int(f.readline())
-graph = [[0 for _ in range(g)] for _ in range(g)]
-stack = []
-visited = [False for _ in range(g)]
-answer = []
+# 재귀
 
-while True :
-    v = list(map(int, f.readline().split()))
-    if not v :
-        break
-    graph[v[0]][v[1]] = 1
-    graph[v[1]][v[0]] = 1
+def dfs_recursive(graph, node, visited):
+    if node not in visited:
+        visited.add(node)  # 방문 처리
+        print(node, end=" ")  # 방문한 노드 출력
+        for neighbor in graph[node]:  # 인접 노드 방문
+            dfs_recursive(graph, neighbor, visited)
 
-def dfs(n) :
-    
-    stack.append(n)
-    
-    while len(answer) != g :
-        v = stack.pop()
-        visited[v] = True
-        answer.append(v + 1)
-        
-        for i in range(g-1, -1, -1) :
-            if graph[v][i] and not visited[i] :
-                stack.append(i)
-    print(*answer)
+# 예제 그래프 (인접 리스트)
+graph = {
+    0: [1, 2],
+    1: [0, 3, 4],
+    2: [0, 5, 6],
+    3: [1],
+    4: [1, 7],
+    5: [2],
+    6: [2],
+    7: [4]
+}
 
-dfs(0)
+visited = set()
+print("DFS (재귀):", end=" ")
+dfs_recursive(graph, 0, visited)
 
-# 재귀함수를 이용한 DFS 구현
-'''
-# 윗부분 동일
+# ----------------------------------------------------------------------------------------
 
-def dfs(n) :
-    print(n + 1, end =" ")
-    visited[n] = True
-    for i in range(g) :
-        if graph[n][i] and not visited[i] :
-            dfs(i)
+# 스택, 반복문
 
-dfs(0)
-'''
+def dfs_stack(graph, start):
+    visited = set()
+    stack = [start]  # 스택 초기화
+
+    while stack:
+        node = stack.pop()  # 스택에서 노드 꺼내기
+        if node not in visited:
+            visited.add(node)  # 방문 처리
+            print(node, end=" ")  # 방문한 노드 출력
+            stack.extend(reversed(graph[node]))  # 인접 노드 추가 (역순으로 넣어야 순서 유지)
+
+# 예제 그래프
+print("\nDFS (스택):", end=" ")
+dfs_stack(graph, 0)

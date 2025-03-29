@@ -156,7 +156,24 @@
     - [Tree.py](Tree.py)
 
 ------------------------------------------------------------
-* 문제 풀어보기
 
+* 기본 알고리즘 틀
+    - 그래프(Graph)
+        - [Graph.py](Graph.py)
+
+    - 이진 검색 트리(BST)
+        - [BST.py](BST.py)
+
+    - 최소 스패닝 트리(MST, Minimum Spanning Tree)
+        - [MST.py](MST.py)
+
+    - DFS(깊이 우선 탐색, Depth-First Search)
+        - [DFS.py](DFS.py)
+
+    - BFS(너비 우선 탐색, Breadth-First Search)
+        - [BFS.py](BFS.py)
+
+    - 위상 정렬(Topological Sorting)
+        - [Topological_Sorting.py](Topological_Sorting.py)
 
 ------------------------------------------------------------
